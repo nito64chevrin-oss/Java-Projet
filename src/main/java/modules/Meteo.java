@@ -1,1 +1,1 @@
-package src.main.java.modules;
+package modules;

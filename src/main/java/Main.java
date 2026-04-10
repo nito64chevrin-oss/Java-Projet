@@ -1,6 +1,8 @@
-package src.main.java;
 import javafx.application.Application;
 import javafx.stage.Stage;
+import javafx.application.Application;
+import javafx.stage.Stage;
+import app.MenuPrincipal;
 
 public class Main extends Application {
     
