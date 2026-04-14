@@ -1,1 +1,4 @@
-MenuPrincipal.class
+modules/ChatBot.class
+Main.class
+modules/TextAnalyser.class
+app/MenuPrincipal.class

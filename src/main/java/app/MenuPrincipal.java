@@ -1,3 +1,5 @@
+package app;
+
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -6,39 +8,30 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modules.TextAnalyser;
-
+import modules.ChatBot;
 public class MenuPrincipal {
     
-    private Stage stage; // La fenêtre de l'application
-    
-    // Constructeur : on reçoit la fenêtre principale
+    private Stage stage;
+
     public MenuPrincipal(Stage stage) {
         this.stage = stage;
     }
     
     public void afficher() {
-        // === 1. TITRE ===
-        Label titre = new Label("DATA & IA TOOLBOX");
+        Label titre = new Label("DATA & IA");
         titre.setStyle("-fx-font-size: 32px; -fx-font-weight: bold;");
-        
-        // === 2. LES 3 BOUTONS ===
-        
-        // Bouton 1 : Analyseur de Texte
         Button btnTexte = new Button("Analyseur\nde Texte");
         styliserBouton(btnTexte);
         btnTexte.setOnAction(e -> ouvrirModuleTexte());
-        
-        // Bouton 2 : Recommandation
+
         Button btnReco = new Button("Système de\nRecommandation");
         styliserBouton(btnReco);
         btnReco.setOnAction(e -> ouvrirModuleReco());
         
-        // Bouton 3 : Météo
-        Button btnMeteo = new Button("Visualisateur\nMétéo");
+        Button btnMeteo = new Button("ChatBot");
         styliserBouton(btnMeteo);
-        btnMeteo.setOnAction(e -> ouvrirModuleMeteo());
+        btnMeteo.setOnAction(e -> ouvrirModuleChatBot());
         
-        // === 3. DISPOSITION HORIZONTALE DES BOUTONS ===
         HBox conteneurBoutons = new HBox(30); // 30 = espacement entre boutons
         conteneurBoutons.getChildren().addAll(btnTexte, btnReco, btnMeteo);
         conteneurBoutons.setAlignment(Pos.CENTER); // Centrer horizontalement
@@ -96,11 +89,10 @@ public class MenuPrincipal {
     
     private void ouvrirModuleReco() {
         System.out.println("Ouverture du module Recommandation...");
-        // TODO : Créer et afficher l'interface du module Recommandation
     }
     
-    private void ouvrirModuleMeteo() {
-        System.out.println("Ouverture du module Météo...");
-        // TODO : Créer et afficher l'interface du module Météo
+    private void ouvrirModuleChatBot() {
+        ChatBot module = new ChatBot(stage);
+        module.afficher();
     }
 }
