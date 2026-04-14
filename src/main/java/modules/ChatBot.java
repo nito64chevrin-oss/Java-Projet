@@ -92,7 +92,8 @@ public class ChatBot {
         layoutPrincipal.setPadding(new Insets(30));
         layoutPrincipal.setStyle("-fx-background-color: #f5f6fa;");
         
-        Scene scene = new Scene(layoutPrincipal, 1000, 700);
+        Scene scene = new Scene(layoutPrincipal, 1600, 1000);
+        stage.setFullScreen(true);
         stage.setScene(scene);
     }
     
@@ -104,7 +105,6 @@ public class ChatBot {
         }
     }
     
-    // ===== ENVOYER UN MESSAGE =====
     private void envoyerMessage() {
         String message = champSaisie.getText().trim();
         
@@ -121,13 +121,11 @@ public class ChatBot {
     
     private String chercherReponse(String question) {
         try {
-            // Découper la question par les connecteurs
             String[] sousQuestions = decouperParConnecteurs(question);
             
             List<String> reponsesTrouvees = new ArrayList<>();
             List<String> questionsSansReponse = new ArrayList<>();
             
-            // Analyser chaque sous-question
             for (String sousQuestion : sousQuestions) {
                 String sousQuestionMin = sousQuestion.trim().toLowerCase();
                 
@@ -135,7 +133,6 @@ public class ChatBot {
                     continue;
                 }
                 
-                // Chercher une réponse pour cette sous-question
                 String reponse = chercherReponseSimple(sousQuestionMin);
                 
                 if (reponse != null) {
@@ -145,7 +142,6 @@ public class ChatBot {
                 }
             }
             
-            // Construire la réponse finale
             StringBuilder reponseFinal = new StringBuilder();
             
             if (!reponsesTrouvees.isEmpty()) {
@@ -157,17 +153,14 @@ public class ChatBot {
                 }
             }
             
-            // Si certaines questions n'ont pas eu de réponse
             if (!questionsSansReponse.isEmpty()) {
                 for (String q : questionsSansReponse) {
                     sauvegarderQuestionSansReponse(q);
                 }
                 
                 if (reponsesTrouvees.isEmpty()) {
-                    // Aucune réponse trouvée
                     return "Désolé, je n'ai pas compris votre question. Elle a été enregistrée et notre équipe y répondra prochainement.";
                 } else {
-                    // Réponses partielles
                     reponseFinal.append("\n\n---\n\nNote : Certaines parties de votre question n'ont pas pu être traitées et ont été enregistrées pour notre équipe.");
                 }
             }

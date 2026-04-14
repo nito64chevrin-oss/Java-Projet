@@ -1,4 +1,7 @@
-modules/ChatBot.class
+modules/PredicteurRisque$Demande.class
 Main.class
 modules/TextAnalyser.class
+modules/PredicteurRisque$1.class
+modules/ChatBot.class
+modules/PredicteurRisque.class
 app/MenuPrincipal.class

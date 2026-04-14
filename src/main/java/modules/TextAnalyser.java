@@ -147,7 +147,8 @@ public class TextAnalyser {
             "-fx-padding: 30px;"
         );
 
-        Scene scene = new Scene(layoutPrincipal, 1250, 1000);
+        Scene scene = new Scene(layoutPrincipal, 1600, 1000);
+        stage.setFullScreen(true);
         stage.setScene(scene);
     }
 

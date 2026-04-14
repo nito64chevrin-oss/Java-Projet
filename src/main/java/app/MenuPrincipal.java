@@ -9,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import modules.TextAnalyser;
 import modules.ChatBot;
+import modules.PredicteurRisque;
 public class MenuPrincipal {
     
     private Stage stage;
@@ -16,7 +17,7 @@ public class MenuPrincipal {
     public MenuPrincipal(Stage stage) {
         this.stage = stage;
     }
-    
+
     public void afficher() {
         Label titre = new Label("DATA & IA");
         titre.setStyle("-fx-font-size: 32px; -fx-font-weight: bold;");
@@ -24,9 +25,9 @@ public class MenuPrincipal {
         styliserBouton(btnTexte);
         btnTexte.setOnAction(e -> ouvrirModuleTexte());
 
-        Button btnReco = new Button("Système de\nRecommandation");
+        Button btnReco = new Button("Predicteur\nde Risque");
         styliserBouton(btnReco);
-        btnReco.setOnAction(e -> ouvrirModuleReco());
+        btnReco.setOnAction(e -> ouvrirPredicteurRisque());
         
         Button btnMeteo = new Button("ChatBot");
         styliserBouton(btnMeteo);
@@ -36,18 +37,16 @@ public class MenuPrincipal {
         conteneurBoutons.getChildren().addAll(btnTexte, btnReco, btnMeteo);
         conteneurBoutons.setAlignment(Pos.CENTER); // Centrer horizontalement
         
-        // === 4. DISPOSITION VERTICALE GLOBALE ===
         VBox layoutPrincipal = new VBox(50); // 50 = espacement vertical
         layoutPrincipal.getChildren().addAll(titre, conteneurBoutons);
         layoutPrincipal.setAlignment(Pos.CENTER); // Tout centré
         layoutPrincipal.setStyle("-fx-background-color: #f0f0f0;"); // Fond gris clair
         
-        // === 5. CRÉATION DE LA SCÈNE ===
-        Scene scene = new Scene(layoutPrincipal, 800, 600);
+        Scene scene = new Scene(layoutPrincipal, 1600, 1000);
+        stage.setFullScreen(true);
         stage.setScene(scene);
-    }
+        }
     
-    // Méthode pour styliser les boutons (coins arrondis, taille, etc.)
     private void styliserBouton(Button btn) {
         btn.setPrefSize(200, 150); // Largeur 200, Hauteur 150
         btn.setStyle(
@@ -80,15 +79,15 @@ public class MenuPrincipal {
         ));
     }
     
-    // === MÉTHODES POUR OUVRIR LES MODULES ===
     
     private void ouvrirModuleTexte() {
         TextAnalyser module = new TextAnalyser(stage);
         module.afficher();
     }
     
-    private void ouvrirModuleReco() {
-        System.out.println("Ouverture du module Recommandation...");
+    private void ouvrirPredicteurRisque() {
+        PredicteurRisque module = new PredicteurRisque(stage);
+        module.afficher();
     }
     
     private void ouvrirModuleChatBot() {
