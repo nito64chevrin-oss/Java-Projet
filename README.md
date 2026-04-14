@@ -9,11 +9,11 @@
 
 ## Test Positif
 
-L'intelligence artificielle transforme notre monde ! Les voitures autonomes roulent sur nos routes. Les assistants virtuels répondent à nos questions. Les robots industriels travaillent dans nos usines. Cette révolution technologique est fascinante et inquiétante à la fois. Comment l'IA va-t-elle changer nos emplois ? Quels métiers vont disparaître ? Quels nouveaux métiers vont apparaître ? L'avenir reste incertain, mais une chose est sûre : l'intelligence artificielle ne s'arrêtera pas. Elle continuera à évoluer, à apprendre, à progresser. Nous devons nous adapter et apprendre nous aussi.
+    L'intelligence artificielle transforme notre monde ! Les voitures autonomes roulent sur nos routes. Les assistants virtuels répondent à nos questions. Les robots industriels travaillent dans nos usines. Cette révolution technologique est fascinante et inquiétante à la fois. Comment l'IA va-t-elle changer nos emplois ? Quels métiers vont disparaître ? Quels nouveaux métiers vont apparaître ? L'avenir reste incertain, mais une chose est sûre : l'intelligence artificielle ne s'arrêtera pas. Elle continuera à évoluer, à apprendre, à progresser. Nous devons nous adapter et apprendre nous aussi.
 
 ## Test Negatif
 
-Le changement climatique menace notre planète. Les températures augmentent dangereusement. Les glaciers fondent rapidement. Les océans montent inexorablement. Cette situation est alarmante et préoccupante. Pourquoi n'agissons-nous pas plus vite ? Les catastrophes naturelles se multiplient. Les incendies dévastent nos forêts. Les inondations détruisent nos villes. L'avenir semble incertain et sombre. Nous devons réagir maintenant ! Il est urgent de changer nos habitudes. Pouvons-nous encore sauver notre environnement ? La réponse dépend de nos actions immédiates. Chaque geste compte dans cette lutte difficile.
+    Le changement climatique menace notre planète. Les températures augmentent dangereusement. Les glaciers fondent rapidement. Les océans montent inexorablement. Cette situation est alarmante et préoccupante. Pourquoi n'agissons-nous pas plus vite ? Les catastrophes naturelles se multiplient. Les incendies dévastent nos forêts. Les inondations détruisent nos villes. L'avenir semble incertain et sombre. Nous devons réagir maintenant ! Il est urgent de changer nos habitudes. Pouvons-nous encore sauver notre environnement ? La réponse dépend de nos actions immédiates. Chaque geste compte dans cette lutte difficile.
 
 # ChatBot
 
