@@ -323,19 +323,7 @@ public class PredicteurRisque {
         conteneurJauge.getChildren().add(jaugeRisque);
         boxJauge.getChildren().addAll(lblJauge, conteneurJauge);
         
-        Button btnRecalculer = new Button("Appliquer à toutes les demandes");
-        btnRecalculer.setPrefSize(280, 40);
-        btnRecalculer.setStyle(
-            "-fx-background-color: #9b59b6;" +
-            "-fx-text-fill: white;" +
-            "-fx-font-size: 14px;" +
-            "-fx-font-weight: bold;" +
-            "-fx-background-radius: 10px;" +
-            "-fx-cursor: hand;"
-        );
-        btnRecalculer.setOnAction(e -> recalculerToutesLesDemandes());
-        
-        zoneResultat.getChildren().addAll(lblScoreSimu, lblDecisionSimu, boxJauge, btnRecalculer);
+        zoneResultat.getChildren().addAll(lblScoreSimu, lblDecisionSimu, boxJauge);
         
         zoneSimu.getChildren().addAll(
             titreSimu,
@@ -379,8 +367,7 @@ public class PredicteurRisque {
             lblDecisionSimu.setStyle("-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill: #FFC107;");
         }
     }
-    
-    // ===== INITIALISER LA BASE DE DONNÉES =====
+
     private void initialiserBaseDeDonnees() {
         try {
             conn = DriverManager.getConnection("jdbc:sqlite:predicteur.db");
@@ -576,49 +563,6 @@ public class PredicteurRisque {
             } catch (SQLException e) {
                 afficherAlerte("Erreur", "Impossible de vider la base");
             }
-        }
-    }
-
-    private void recalculerToutesLesDemandes() {
-        if (demandes.isEmpty()) {
-            afficherAlerte("Aucune demande", "Importez d'abord un fichier CSV");
-            return;
-        }
-        
-        try {
-            Statement stmt = conn.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM demandes_pret");
-            
-            int compteur = 0;
-            
-            while (rs.next()) {
-                int id = rs.getInt("id");
-                int age = rs.getInt("age");
-                double revenus = rs.getDouble("revenus_mensuels");
-                double montant = rs.getDouble("montant_demande");
-                int duree = rs.getInt("duree_mois");
-                String emploi = rs.getString("emploi");
-                double dette = rs.getDouble("dette_actuelle");
-                
-                int nouveauScore = calculerScore(age, revenus, montant, duree, emploi, dette);
-                String nouvelleDecision = determinerDecision(nouveauScore);
-                
-                PreparedStatement pstmt = conn.prepareStatement(
-                    "UPDATE demandes_pret SET score_risque = ?, decision = ? WHERE id = ?"
-                );
-                pstmt.setInt(1, nouveauScore);
-                pstmt.setString(2, nouvelleDecision);
-                pstmt.setInt(3, id);
-                pstmt.executeUpdate();
-                
-                compteur++;
-            }
-            
-            afficherAlerte("Recalcul terminé", compteur + " demandes recalculées avec les nouveaux critères");
-            chargerDemandes();
-            
-        } catch (SQLException e) {
-            afficherAlerte("Erreur", "Impossible de recalculer les demandes");
         }
     }
     
